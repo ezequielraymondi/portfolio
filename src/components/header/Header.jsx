@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./header.css";
 
 const Header = () => {
-  window.addEventListener("scroll", function () {
-    const header = document.querySelector(".header");
-    if (this.scrollY >= 80) header.classList.add("scroll-header");
-    else header.classList.remove("scroll-header");
-  });
+  useEffect(() => {
+    const handleScroll = () => {
+      const header = document.querySelector(".header");
+
+      if (!header) {
+        return;
+      }
+
+      if (window.scrollY >= 80) header.classList.add("scroll-header");
+      else header.classList.remove("scroll-header");
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const [Toggle, showMenu] = useState(false);
   const [activeNav, setActiveNav] = useState("#home");

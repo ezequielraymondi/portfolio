@@ -16,8 +16,6 @@ const WorkItems = ({ item }) => {
           ))}
         </div>
 
-        <p className="work__impact">{item.impact}</p>
-
         <a href={item.url} className="work__button" target="_blank" rel="noreferrer">
           Ver proyecto
           <i className="bx bx-right-arrow-alt work__button-icon"></i>

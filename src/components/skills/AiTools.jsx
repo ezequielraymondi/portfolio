@@ -1,11 +1,11 @@
 import React from "react";
 
-const Backend = () => {
-  const skills = ["PHP", "MySQL/SQL", "LAMP", "Node.js", "AWS EC2/S3", "Postman", "Firebase"];
+const AiTools = () => {
+  const skills = ["Cursor IDE", "OpenAI Codex", "Claude Code", "Antigravity", "Prompting", "Spec-Driven Dev"];
 
   return (
     <div className="skills__content">
-      <h3 className="skills__title">Backend, datos y despliegue</h3>
+      <h3 className="skills__title">Desarrollo asistido por IA</h3>
 
       <div className="skills__box">
         {skills.map((name) => (
@@ -19,4 +19,4 @@ const Backend = () => {
   );
 };
 
-export default Backend;
+export default AiTools;

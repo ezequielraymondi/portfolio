@@ -41,15 +41,16 @@
 .home__subtitle {
   position: relative;
   font-size: var(--h3-font-size);
-  padding-left: 5.4rem;
+  padding-left: 3.75rem;
   font-weight: var(--font-normal);
   margin-bottom: var(--mb-1);
+  white-space: nowrap;
 }
 
 .home__subtitle::before {
   content: "";
   position: absolute;
-  width: 70px;
+  width: 44px;
   height: 1px;
   background-color: var(--accent-color-alt);
   left: 0;
@@ -149,12 +150,12 @@
   }
 
   .home__subtitle {
-    padding-left: 3.75rem;
+    padding-left: 3rem;
     margin-bottom: var(--mb-1);
   }
 
   .home__subtitle::before {
-    width: 42px;
+    width: 34px;
     top: 0.8rem;
   }
 
@@ -240,11 +241,12 @@
   }
 
   .home__subtitle {
-    padding-left: 2.5rem;
+    padding-left: 0;
+    white-space: normal;
   }
 
   .home__subtitle::before {
-    width: 30px;
+    display: none;
   }
 
   .home__actions {

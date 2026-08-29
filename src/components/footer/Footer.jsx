@@ -48,7 +48,7 @@ const Footer = () => {
         </div>
 
         <span className="footer__copy">
-          &#169; LeandroRaymondi. Full-Stack Developer PHP/LAMP.
+          &#169; LeandroRaymondi. Desarrollador Web / AI-Assisted Developer.
         </span>
       </div>
     </footer>

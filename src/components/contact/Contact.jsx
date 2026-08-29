@@ -123,7 +123,7 @@ const Contact = () => {
                 cols="30"
                 rows="10"
                 className="contact__form-input"
-                placeholder="Contame sobre el rol, proyecto o desafio"
+                placeholder="Contame sobre el rol, proyecto o desafío"
                 required
               ></textarea>
             </div>
