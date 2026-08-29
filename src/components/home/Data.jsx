@@ -10,9 +10,9 @@ const Data = () => {
       <h3 className="home__subtitle">Desarrollador Web / AI-Assisted Developer</h3>
 
       <p className="home__description">
-        Construyo soluciones web de alto impacto que combinan experiencia técnica, criterio de producto y ejecución
-        end-to-end. Con más de 3 años trabajando con LAMP, JavaScript y React, integro IA en mi flujo para entregar
-        más rápido, refactorizar con precisión y sostener altos estándares de calidad.
+        Desarrollo soluciones web end-to-end desde el lado técnico: lógica de negocio, bases de datos, integración de
+        interfaces, APIs y despliegue. Me enfoco en construir sistemas claros, mantenibles y escalables, potenciando mi
+        flujo con IA para mejorar velocidad, debugging y refactorización.
       </p>
 
       <div className="home__actions">

@@ -10,9 +10,15 @@ const Info = () => {
       </div>
 
       <div className="about__box">
-        <i className="bx bx-server about__icon"></i>
-        <h3 className="about__title">Foco</h3>
-        <span className="about__subtitle">LAMP + IA</span>
+        <i className="bx bx-user-voice about__icon"></i>
+        <h3 className="about__title">Perfil</h3>
+        <span className="about__subtitle">Proactivo y empático</span>
+      </div>
+
+      <div className="about__box">
+        <i className="bx bx-bulb about__icon"></i>
+        <h3 className="about__title">Actitud</h3>
+        <span className="about__subtitle">Ideas y compromiso</span>
       </div>
     </div>
   );

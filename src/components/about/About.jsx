@@ -18,10 +18,10 @@ const About = () => {
           <Info />
 
           <p className="about__description">
-            Tengo 26 años y hace más de 3 años trabajo de forma freelance creando soluciones web para distintos
-            clientes y necesidades. Me apasiona el desarrollo, pero también disfruto involucrarme en las decisiones,
-            proponer ideas que sumen y colaborar para que cada proyecto avance con claridad. Me considero una persona
-            leal, proactiva, empática y comprometida con construir relaciones de confianza además de buen software.
+            Soy una persona comprometida, proactiva y con muchas ganas de seguir creciendo. Hace más de 3 años trabajo
+            como desarrollador freelance, lo que me enseñó a adaptarme, comunicarme con clientes, tomar decisiones
+            técnicas y sostener proyectos en producción. Me gusta aportar ideas, colaborar con otros y formar parte de
+            equipos donde pueda sumar desde lo técnico y lo humano.
           </p>
 
           <a download="" href={CV} className="button button--flex">
