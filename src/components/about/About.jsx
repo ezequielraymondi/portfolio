@@ -12,7 +12,7 @@ const About = () => {
       <span className="section__subtitle">Un poco más sobre quién soy</span>
 
       <div className="about__container container grid">
-        <img src={AboutImg} alt="Leandro Raymondi" className="about__img" />
+        <img src={AboutImg} alt="Ezequiel Raymondi, desarrollador web" className="about__img" />
 
         <div className="about__data">
           <Info />

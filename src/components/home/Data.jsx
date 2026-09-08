@@ -6,7 +6,7 @@ const Data = () => {
   return (
     <div className="home__data">
       <span className="home__eyebrow">Disponible para equipos y proyectos web</span>
-      <h1 className="home__title">Leandro Ezequiel Raymondi Rossa</h1>
+      <h1 className="home__title">Ezequiel Raymondi</h1>
       <h3 className="home__subtitle">Desarrollador Web / AI-Assisted Developer</h3>
 
       <p className="home__description">

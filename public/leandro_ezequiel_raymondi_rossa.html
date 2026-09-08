@@ -1,431 +1,490 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Leandro Ezequiel Raymondi Rossa</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV - Ezequiel Raymondi | Desarrollador Web</title>
+    <meta
+      name="description"
+      content="CV de Ezequiel Raymondi (Leandro Ezequiel Raymondi Rossa), desarrollador web en Argentina. Experiencia con PHP, React, MySQL y AWS."
+    />
+    <link rel="canonical" href="https://ezequielraymondi.com.ar/leandro_ezequiel_raymondi_rossa.html" />
     <style>
-        /* RESET & BASE STYLES */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+      /* RESET & BASE STYLES */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
+      body {
+        font-family:
+          "Segoe UI",
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          Roboto,
+          sans-serif;
+        color: #2b3648;
+        background-color: #f4f6f9;
+        line-height: 1.45;
+        font-size: 9.5pt;
+      }
+
+      /* PAGE SETUP FOR A4 PRINTING */
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 12mm 15mm;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      @media print {
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-            color: #2b3648;
-            background-color: #f4f6f9;
-            line-height: 1.45;
-            font-size: 9.5pt;
-        }
-
-        /* PAGE SETUP FOR A4 PRINTING */
-        @page {
-            size: A4;
-            margin: 0;
+          background: none;
         }
 
         .page {
-            width: 210mm;
-            min-height: 297mm;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 12mm 15mm;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          box-shadow: none;
+          width: 100%;
+          height: 100%;
         }
+      }
 
-        @media print {
-            body {
-                background: none;
-            }
+      /* HEADER SECTION */
+      header {
+        border-bottom: 2px solid #1e3a8a;
+        padding-bottom: 10px;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
 
-            .page {
-                box-shadow: none;
-                width: 100%;
-                height: 100%;
-            }
-        }
+      .header-title h1 {
+        font-size: 18pt;
+        color: #0f172a;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 700;
+      }
 
-        /* HEADER SECTION */
-        header {
-            border-bottom: 2px solid #1e3a8a;
-            padding-bottom: 10px;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
+      .header-title h2 {
+        font-size: 11pt;
+        color: #2563eb;
+        font-weight: 600;
+        margin-top: 2px;
+      }
 
-        .header-title h1 {
-            font-size: 18pt;
-            color: #0f172a;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 700;
-        }
+      .header-contact {
+        text-align: right;
+        font-size: 8.5pt;
+        color: #475569;
+      }
 
-        .header-title h2 {
-            font-size: 11pt;
-            color: #2563eb;
-            font-weight: 600;
-            margin-top: 2px;
-        }
+      .header-contact a {
+        color: #2563eb;
+        text-decoration: none;
+      }
 
-        .header-contact {
-            text-align: right;
-            font-size: 8.5pt;
-            color: #475569;
-        }
+      /* LAYOUT GRID */
+      .cv-grid {
+        display: grid;
+        grid-template-columns: 32% 65%;
+        gap: 3%;
+        flex-grow: 1;
+      }
 
-        .header-contact a {
-            color: #2563eb;
-            text-decoration: none;
-        }
+      /* SECTION STYLING */
+      .section-title {
+        font-size: 10pt;
+        color: #0f172a;
+        text-transform: uppercase;
+        font-weight: 700;
+        border-bottom: 1.5px solid #cbd5e1;
+        padding-bottom: 3px;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+      }
 
-        /* LAYOUT GRID */
-        .cv-grid {
-            display: grid;
-            grid-template-columns: 32% 65%;
-            gap: 3%;
-            flex-grow: 1;
-        }
+      /* SIDEBAR STYLING */
+      .sidebar {
+        background-color: #f8fafc;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #e2e8f0;
+      }
 
-        /* SECTION STYLING */
-        .section-title {
-            font-size: 10pt;
-            color: #0f172a;
-            text-transform: uppercase;
-            font-weight: 700;
-            border-bottom: 1.5px solid #cbd5e1;
-            padding-bottom: 3px;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
+      .sidebar-group {
+        margin-bottom: 12px;
+      }
 
-        /* SIDEBAR STYLING */
-        .sidebar {
-            background-color: #f8fafc;
-            padding: 10px;
-            border-radius: 4px;
-            border: 1px solid #e2e8f0;
-        }
+      .sidebar-group h3 {
+        font-size: 9pt;
+        color: #1e3a8a;
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
 
-        .sidebar-group {
-            margin-bottom: 12px;
-        }
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
 
-        .sidebar-group h3 {
-            font-size: 9pt;
-            color: #1e3a8a;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
+      .tag {
+        background-color: #e0e7ff;
+        color: #3730a3;
+        font-size: 7.5pt;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-weight: 500;
+      }
 
-        .tag-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-        }
+      .edu-item {
+        margin-bottom: 8px;
+      }
 
-        .tag {
-            background-color: #e0e7ff;
-            color: #3730a3;
-            font-size: 7.5pt;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-weight: 500;
-        }
+      .edu-title {
+        font-weight: 600;
+        font-size: 8.5pt;
+        color: #1e293b;
+      }
 
-        .edu-item {
-            margin-bottom: 8px;
-        }
+      .edu-meta {
+        font-size: 8pt;
+        color: #64748b;
+      }
 
-        .edu-title {
-            font-weight: 600;
-            font-size: 8.5pt;
-            color: #1e293b;
-        }
+      /* MAIN CONTENT STYLING */
+      .profile-summary {
+        font-size: 9pt;
+        color: #334155;
+        margin-bottom: 12px;
+        text-align: justify;
+      }
 
-        .edu-meta {
-            font-size: 8pt;
-            color: #64748b;
-        }
+      .timeline-item {
+        margin-bottom: 12px;
+      }
 
-        /* MAIN CONTENT STYLING */
-        .profile-summary {
-            font-size: 9pt;
-            color: #334155;
-            margin-bottom: 12px;
-            text-align: justify;
-        }
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 2px;
+      }
 
-        .timeline-item {
-            margin-bottom: 12px;
-        }
+      .job-title {
+        font-size: 9.5pt;
+        font-weight: 700;
+        color: #0f172a;
+      }
 
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 2px;
-        }
+      .job-company {
+        font-size: 8.5pt;
+        color: #2563eb;
+        font-weight: 600;
+      }
 
-        .job-title {
-            font-size: 9.5pt;
-            font-weight: 700;
-            color: #0f172a;
-        }
+      .job-date {
+        font-size: 8pt;
+        color: #64748b;
+        font-weight: 500;
+      }
 
-        .job-company {
-            font-size: 8.5pt;
-            color: #2563eb;
-            font-weight: 600;
-        }
+      .bullet-list {
+        list-style-type: disc;
+        margin-left: 14px;
+        color: #334155;
+        font-size: 8.5pt;
+      }
 
-        .job-date {
-            font-size: 8pt;
-            color: #64748b;
-            font-weight: 500;
-        }
+      .bullet-list li {
+        margin-bottom: 3px;
+      }
 
-        .bullet-list {
-            list-style-type: disc;
-            margin-left: 14px;
-            color: #334155;
-            font-size: 8.5pt;
-        }
+      /* PROJECT CARDS */
+      .projects-container {
+        margin-top: 6px;
+      }
 
-        .bullet-list li {
-            margin-bottom: 3px;
-        }
+      .project-card {
+        background-color: #f8fafc;
+        border-left: 3px solid #2563eb;
+        padding: 6px 8px;
+        margin-bottom: 6px;
+        border-radius: 0 4px 4px 0;
+      }
 
-        /* PROJECT CARDS */
-        .projects-container {
-            margin-top: 6px;
-        }
+      .project-name {
+        font-weight: 700;
+        font-size: 8.5pt;
+        color: #0f172a;
+      }
 
-        .project-card {
-            background-color: #f8fafc;
-            border-left: 3px solid #2563eb;
-            padding: 6px 8px;
-            margin-bottom: 6px;
-            border-radius: 0 4px 4px 0;
-        }
+      .project-desc {
+        font-size: 8pt;
+        color: #475569;
+        margin: 2px 0;
+      }
 
-        .project-name {
-            font-weight: 700;
-            font-size: 8.5pt;
-            color: #0f172a;
-        }
-
-        .project-desc {
-            font-size: 8pt;
-            color: #475569;
-            margin: 2px 0;
-        }
-
-        .project-tech {
-            font-size: 7.5pt;
-            color: #64748b;
-            font-weight: 600;
-        }
+      .project-tech {
+        font-size: 7.5pt;
+        color: #64748b;
+        font-weight: 600;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div class="page">
-        <!-- HEADER -->
-        <header>
-            <div class="header-title">
-                <h1>Leandro Ezequiel Raymondi Rossa</h1>
-                <h2>Desarrollador Web / AI-Assisted Developer</h2>
-            </div>
-            <div class="header-contact">
-                <p>Pilar, Buenos Aires, Argentina</p>
-                <p><a href="mailto:ezequielraymondi@gmail.com">ezequielraymondi@gmail.com</a></p>
-                <p>+54 11 6848-9990</p>
-                <p><a href="https://linkedin.com/in/leandroraymondi">LinkedIn</a> | <a
-                        href="https://github.com/LeandroRaymondi">GitHub</a></p>
-            </div>
-        </header>
-
-        <!-- CONTENT GRID -->
-        <div class="cv-grid">
-
-            <!-- LEFT COLUMN (SIDEBAR) -->
-            <aside class="sidebar">
-
-                <!-- SKILLS: AI TOOLS -->
-                <div class="sidebar-group">
-                    <div class="section-title">Desarrollo</div>
-                    <div class="tag-list">
-                        <span class="tag">Pi CLI</span>
-                        <span class="tag">Cursor IDE</span>
-                        <span class="tag">OpenAI Codex</span>
-                        <span class="tag">Claude Code</span>
-                        <span class="tag">Antigravity</span>
-                        <span class="tag">Prompting</span>
-                        <span class="tag">Spec-Driven Dev</span>
-                        <span class="tag">Auto-Debugging</span>
-                    </div>
-                </div>
-
-                <!-- SKILLS: TECH STACK -->
-                <div class="sidebar-group">
-                    <div class="section-title">Stack Técnico</div>
-                    <div class="tag-list">
-                        <span class="tag">PHP (LAMP)</span>
-                        <span class="tag">JavaScript ES6+</span>
-                        <span class="tag">React</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">MySQL</span>
-                        <span class="tag">REST APIs</span>
-                        <span class="tag">HTML5 / CSS3</span>
-                        <span class="tag">SASS</span>
-                        <span class="tag">AWS (EC2/S3)</span>
-                        <span class="tag">Git / GitHub</span>
-                        <span class="tag">Postman</span>
-                        <span class="tag">Firebase</span>
-                    </div>
-                </div>
-
-                <!-- EDUCATION & CERTIFICATIONS -->
-                <div class="sidebar-group">
-                    <div class="section-title">Educación & Certs</div>
-
-                    <div class="edu-item">
-                        <div class="edu-title">Google AI for App Building</div>
-                        <div class="edu-meta">Coursera - Julio 2026</div>
-                    </div>
-
-                    <div class="edu-item">
-                        <div class="edu-title">React & Node.js</div>
-                        <div class="edu-meta">Coderhouse</div>
-                    </div>
-
-                    <div class="edu-item">
-                        <div class="edu-title">JavaScript ES6</div>
-                        <div class="edu-meta">Coderhouse</div>
-                    </div>
-
-                    <div class="edu-item">
-                        <div class="edu-title">Desarrollo Web Full Stack</div>
-                        <div class="edu-meta">Coderhouse</div>
-                    </div>
-
-                    <div class="edu-item">
-                        <div class="edu-title">Bachiller en Economía</div>
-                        <div class="edu-meta">CENS N°453</div>
-                    </div>
-                </div>
-
-                <!-- LANGUAGES -->
-                <div class="sidebar-group">
-                    <div class="section-title">Idiomas</div>
-                    <p style="font-size: 8.5pt; color: #334155;">Español (Nativo)</p>
-                    <p style="font-size: 8.5pt; color: #334155;">Inglés (Básico)</p>
-                    <p style="font-size: 8.5pt; color: #334155;">Portugués (Básico)</p>
-                </div>
-
-            </aside>
-
-            <!-- RIGHT COLUMN (MAIN CONTENT) -->
-            <main class="main-content">
-
-                <!-- PROFILE -->
-                <section style="margin-bottom: 12px;">
-                    <div class="section-title">Perfil Profesional</div>
-                    <p class="profile-summary">
-                        Desarrollador de software enfocado en soluciones web de alto impacto. Con más de 3 años de
-                        experiencia en desarrollo tradicional utilizando el stack LAMP, JavaScript y React, hoy potencio
-                        mi flujo de trabajo con desarrollo asistido por IA. Esta combinación
-                        me permite acelerar la entrega end-to-end, optimizar la refactorización y mantener altos
-                        estándares de calidad de código.
-                    </p>
-                </section>
-
-                <!-- EXPERIENCE -->
-                <section>
-                    <div class="section-title">Experiencia Laboral</div>
-
-                    <div class="timeline-item">
-                        <div class="job-header">
-                            <span class="job-title">Desarrollador Full-Stack & AI Developer</span>
-                            <span class="job-date">Marzo 2023 – Presente</span>
-                        </div>
-                        <div class="job-company" style="margin-bottom: 4px;">Profesional Independiente</div>
-
-                        <ul class="bullet-list">
-                            <li><strong>Desarrollo Web End-to-End:</strong> Diseño, arquitectura e implementación de
-                                soluciones web a medida para más de 7 clientes en sectores de alto impacto, utilizando
-                                el stack LAMP, React, JavaScript y despliegue en AWS.</li>
-                            <li><strong>Flujo de Trabajo Aumentado con IA:</strong> Integración avanzada de asistencia
-                                con IA en el ciclo de desarrollo, optimizando la refactorización de código, generación
-                                de pruebas unitarias y reduciendo el tiempo de resolución de bugs y entregas.
-                            </li>
-                            <li><strong>Arquitectura y Escalabilidad:</strong> Diseño y optimización de bases de datos
-                                relacionales en MySQL, garantizando alta disponibilidad, consultas eficientes y código
-                                limpio y mantenible.</li>
-                        </ul>
-
-                        <!-- FEATURED PROJECTS -->
-                        <div class="projects-container">
-                            <div style="font-weight: 600; font-size: 8.5pt; color: #1e3a8a; margin: 6px 0 4px 0;">
-                                Proyectos Destacados:</div>
-
-                            <div class="project-card">
-                                <div class="project-name">
-                                    <a href="https://experienciasophielangues.sophielangues.com.ar/" target="_blank"
-                                        rel="noopener noreferrer"
-                                        style="color: inherit; text-decoration: none;">Experiencias Sophie Langues</a>
-                                </div>
-                                <div class="project-desc">Plataforma e-learning interactiva para academia de idiomas.
-                                    Incluye catálogo de cursos, gestión de contenidos, registro de usuarios y
-                                    experiencia optimizada para conversión.</div>
-                                <div class="project-tech">Stack: PHP, JavaScript, MySQL, HTML/CSS</div>
-                            </div>
-
-                            <div class="project-card">
-                                <div class="project-name">
-                                    <a href="https://youtube.com/shorts/zGlCkNKy94g" target="_blank"
-                                        rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Google
-                                        x AIConnect (Demo)</a>
-                                </div>
-                                <div class="project-desc">Plataforma interactiva para eventos presenciales de Google.
-                                    Incluye trivia, tótems, memotest, fotos y ranking en tiempo real.</div>
-                                <div class="project-tech">Stack: JavaScript, PHP, MySQL, AWS</div>
-                            </div>
-
-                            <div class="project-card">
-                                <div class="project-name">CardiodiabetesEnRed — Novo Nordisk</div>
-                                <div class="project-desc">Plataforma de capacitación gamificada con leaderboard, panel
-                                    de administración y métricas en tiempo real.</div>
-                                <div class="project-tech">Stack: JavaScript, PHP, AWS</div>
-                            </div>
-
-                            <div class="project-card">
-                                <div class="project-name">
-                                    <a href="https://sepeliosnatarello.com.ar/" target="_blank"
-                                        rel="noopener noreferrer"
-                                        style="color: inherit; text-decoration: none;">Sepelios Natarello</a>
-                                </div>
-                                <div class="project-desc">Sitio corporativo con CMS personalizado, galería dinámica y
-                                    sección de homenajes con arquitectura optimizada.</div>
-                                <div class="project-tech">Stack: PHP, MySQL, AWS</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-            </main>
+      <!-- HEADER -->
+      <header>
+        <div class="header-title">
+          <h1>Leandro Ezequiel Raymondi Rossa</h1>
+          <h2>Ezequiel Raymondi · Desarrollador Web / AI-Assisted Developer</h2>
         </div>
+        <div class="header-contact">
+          <p>Pilar, Buenos Aires, Argentina</p>
+          <p>
+            <a href="mailto:ezequielraymondi@gmail.com"
+              >ezequielraymondi@gmail.com</a
+            >
+          </p>
+          <p>+54 11 6848-9990</p>
+          <a href="https://ezequielraymondi.com.ar/">ezequielraymondi.com.ar</a>
+          <p>
+            <a href="https://www.linkedin.com/in/ezequielraymondi/">LinkedIn</a> |
+            <a href="https://github.com/ezequielraymondi/">GitHub</a>
+          </p>
+        </div>
+      </header>
+
+      <!-- CONTENT GRID -->
+      <div class="cv-grid">
+        <!-- LEFT COLUMN (SIDEBAR) -->
+        <aside class="sidebar">
+          <!-- SKILLS: AI TOOLS -->
+          <div class="sidebar-group">
+            <div class="section-title">Desarrollo</div>
+            <div class="tag-list">
+              <span class="tag">Pi CLI</span>
+              <span class="tag">Cursor IDE</span>
+              <span class="tag">OpenAI Codex</span>
+              <span class="tag">Claude Code</span>
+              <span class="tag">Antigravity</span>
+              <span class="tag">Prompting</span>
+              <span class="tag">Spec-Driven Dev</span>
+              <span class="tag">Auto-Debugging</span>
+            </div>
+          </div>
+
+          <!-- SKILLS: TECH STACK -->
+          <div class="sidebar-group">
+            <div class="section-title">Stack Técnico</div>
+            <div class="tag-list">
+              <span class="tag">PHP (LAMP)</span>
+              <span class="tag">JavaScript ES6+</span>
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">HTML5 / CSS3</span>
+              <span class="tag">SASS</span>
+              <span class="tag">AWS (EC2/S3)</span>
+              <span class="tag">Git / GitHub</span>
+              <span class="tag">Postman</span>
+              <span class="tag">Firebase</span>
+            </div>
+          </div>
+
+          <!-- EDUCATION & CERTIFICATIONS -->
+          <div class="sidebar-group">
+            <div class="section-title">Educación & Certs</div>
+
+            <div class="edu-item">
+              <div class="edu-title">Google AI for App Building</div>
+              <div class="edu-meta">Coursera - Julio 2026</div>
+            </div>
+
+            <div class="edu-item">
+              <div class="edu-title">React & Node.js</div>
+              <div class="edu-meta">Coderhouse</div>
+            </div>
+
+            <div class="edu-item">
+              <div class="edu-title">JavaScript ES6</div>
+              <div class="edu-meta">Coderhouse</div>
+            </div>
+
+            <div class="edu-item">
+              <div class="edu-title">Desarrollo Web Full Stack</div>
+              <div class="edu-meta">Coderhouse</div>
+            </div>
+
+            <div class="edu-item">
+              <div class="edu-title">Bachiller en Economía</div>
+              <div class="edu-meta">CENS N°453</div>
+            </div>
+          </div>
+
+          <!-- LANGUAGES -->
+          <div class="sidebar-group">
+            <div class="section-title">Idiomas</div>
+            <p style="font-size: 8.5pt; color: #334155">Español (Nativo)</p>
+            <p style="font-size: 8.5pt; color: #334155">Inglés (Básico)</p>
+            <p style="font-size: 8.5pt; color: #334155">Portugués (Básico)</p>
+          </div>
+        </aside>
+
+        <!-- RIGHT COLUMN (MAIN CONTENT) -->
+        <main class="main-content">
+          <!-- PROFILE -->
+          <section style="margin-bottom: 12px">
+            <div class="section-title">Perfil Profesional</div>
+            <p class="profile-summary">
+              Desarrollador de software enfocado en soluciones web de alto
+              impacto. Con más de 3 años de experiencia en desarrollo
+              tradicional utilizando el stack LAMP, JavaScript y React, hoy
+              potencio mi flujo de trabajo con desarrollo asistido por IA. Esta
+              combinación me permite acelerar la entrega end-to-end, optimizar
+              la refactorización y mantener altos estándares de calidad de
+              código.
+            </p>
+          </section>
+
+          <!-- EXPERIENCE -->
+          <section>
+            <div class="section-title">Experiencia Laboral</div>
+
+            <div class="timeline-item">
+              <div class="job-header">
+                <span class="job-title"
+                  >Desarrollador Full-Stack & AI Developer</span
+                >
+                <span class="job-date">Marzo 2023 – Presente</span>
+              </div>
+              <div class="job-company" style="margin-bottom: 4px">
+                Profesional Independiente
+              </div>
+
+              <ul class="bullet-list">
+                <li>
+                  <strong>Desarrollo Web End-to-End:</strong> Diseño,
+                  arquitectura e implementación de soluciones web a medida para
+                  más de 7 clientes en sectores de alto impacto, utilizando el
+                  stack LAMP, React, JavaScript y despliegue en AWS.
+                </li>
+                <li>
+                  <strong>Flujo de Trabajo Aumentado con IA:</strong>
+                  Integración avanzada de asistencia con IA en el ciclo de
+                  desarrollo, optimizando la refactorización de código,
+                  generación de pruebas unitarias y reduciendo el tiempo de
+                  resolución de bugs y entregas.
+                </li>
+                <li>
+                  <strong>Arquitectura y Escalabilidad:</strong> Diseño y
+                  optimización de bases de datos relacionales en MySQL,
+                  garantizando alta disponibilidad, consultas eficientes y
+                  código limpio y mantenible.
+                </li>
+              </ul>
+
+              <!-- FEATURED PROJECTS -->
+              <div class="projects-container">
+                <div
+                  style="
+                    font-weight: 600;
+                    font-size: 8.5pt;
+                    color: #1e3a8a;
+                    margin: 6px 0 4px 0;
+                  "
+                >
+                  Proyectos Destacados:
+                </div>
+
+                <div class="project-card">
+                  <div class="project-name">
+                    <a
+                      href="https://experienciasophielangues.sophielangues.com.ar/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style="color: inherit; text-decoration: none"
+                      >Experiencias Sophie Langues</a
+                    >
+                  </div>
+                  <div class="project-desc">
+                    Plataforma e-learning interactiva para academia de idiomas.
+                    Incluye catálogo de cursos, gestión de contenidos, registro
+                    de usuarios y experiencia optimizada para conversión.
+                  </div>
+                  <div class="project-tech">
+                    Stack: PHP, JavaScript, MySQL, HTML/CSS
+                  </div>
+                </div>
+
+                <div class="project-card">
+                  <div class="project-name">
+                    <a
+                      href="https://youtube.com/shorts/zGlCkNKy94g"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style="color: inherit; text-decoration: none"
+                      >Google x AIConnect (Demo)</a
+                    >
+                  </div>
+                  <div class="project-desc">
+                    Plataforma interactiva para eventos presenciales de Google.
+                    Incluye trivia, tótems, memotest, fotos y ranking en tiempo
+                    real.
+                  </div>
+                  <div class="project-tech">
+                    Stack: JavaScript, PHP, MySQL, AWS
+                  </div>
+                </div>
+
+                <div class="project-card">
+                  <div class="project-name">
+                    CardiodiabetesEnRed — Novo Nordisk
+                  </div>
+                  <div class="project-desc">
+                    Plataforma de capacitación gamificada con leaderboard, panel
+                    de administración y métricas en tiempo real.
+                  </div>
+                  <div class="project-tech">Stack: JavaScript, PHP, AWS</div>
+                </div>
+
+                <div class="project-card">
+                  <div class="project-name">
+                    <a
+                      href="https://sepeliosnatarello.com.ar/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style="color: inherit; text-decoration: none"
+                      >Sepelios Natarello</a
+                    >
+                  </div>
+                  <div class="project-desc">
+                    Sitio corporativo con CMS personalizado, galería dinámica y
+                    sección de homenajes con arquitectura optimizada.
+                  </div>
+                  <div class="project-tech">Stack: PHP, MySQL, AWS</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
     </div>
-
-</body>
-
+  </body>
 </html>

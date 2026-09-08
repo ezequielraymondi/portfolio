@@ -12,9 +12,9 @@ Archivo de seguimiento para mantener contexto entre sesiones de Pi/Codex y revis
 
 ## Estado actual
 
-- Foco: tareas actuales completadas; esperar nuevas indicaciones de Leandro.
-- Última revisión: se aplicaron y verificaron los ajustes de hero, `Sobre mí`, cards personales, stack técnico y casos reales.
-- Verificación: `npm run build` ejecutado correctamente después de los últimos cambios.
+- Foco: SEO y marca unificada como **Ezequiel Raymondi · Desarrollador Web**; deploy pendiente en Vercel.
+- Última revisión: Fase 1 SEO implementada (meta tags, robots.txt, sitemap.xml, JSON-LD, redes sociales, links LinkedIn/GitHub actualizados).
+- Verificación: `npm run build` pendiente tras cambios SEO.
 
 ## Fuentes de verdad actuales
 
@@ -27,7 +27,8 @@ Archivo de seguimiento para mantener contexto entre sesiones de Pi/Codex y revis
 
 ## Pendiente
 
-- Esperar nuevas indicaciones de Leandro.
+- Deploy en Vercel con cambios SEO y pedir indexación del sitemap en Search Console.
+- Opcional futuro: agregar imagen `public/og-image.jpg` (1200x630) para previews en WhatsApp/LinkedIn.
 - Opcional futuro: generar PDF actualizado desde el CV HTML si se prefiere descargar PDF en lugar de HTML.
 - Opcional futuro: revisar assets/dependencias heredadas si se decide hacer una limpieza profunda.
 
@@ -50,6 +51,11 @@ Archivo de seguimiento para mantener contexto entre sesiones de Pi/Codex y revis
 - Se borraron `.log` locales y copias duplicadas de imágenes del root que ya estaban en `src/assets/`.
 - Se movieron listeners de scroll de `Header.jsx` y `ScrollUp.jsx` a `useEffect` con cleanup.
 - Se ejecutó `npm run build` correctamente tras los cambios.
+- Fase 1 SEO: `public/index.html` con meta tags, Open Graph, Twitter Card y JSON-LD Person.
+- Se agregaron `public/robots.txt` y `public/sitemap.xml`.
+- Marca pública unificada a **Ezequiel Raymondi** en header, hero, footer y about.
+- Redes sociales agregadas en home y footer (LinkedIn, GitHub, Instagram, TikTok, YouTube, Facebook).
+- Links profesionales actualizados a `linkedin.com/in/ezequielraymondi` y `github.com/ezequielraymondi`.
 
 ## Decisiones
 
