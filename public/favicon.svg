@@ -1,13 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Ezequiel Raymondi">
-  <rect width="32" height="32" rx="7" fill="#006d77"/>
+  <rect width="32" height="32" fill="#ffffff"/>
   <text
     x="16"
-    y="21.5"
+    y="22"
     text-anchor="middle"
-    fill="#ffffff"
-    font-family="Poppins, Segoe UI, sans-serif"
-    font-size="13"
-    font-weight="600"
-    letter-spacing="-0.5"
-  >ER</text>
+    fill="#000000"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="20"
+    font-weight="700"
+  >E</text>
 </svg>
