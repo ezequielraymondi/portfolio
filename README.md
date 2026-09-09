@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Portfolio — Ezequiel Raymondi
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Portfolio personal de **Ezequiel Raymondi**, desarrollador web. Presenta casos reales, stack técnico, CV descargable y formulario de contacto.
 
-## Available Scripts
+**Sitio en vivo:** [ezequielraymondi.com.ar](https://ezequielraymondi.com.ar)
 
-In the project directory, you can run:
+## Stack
 
-### `npm start`
+- React 18 (Create React App)
+- CSS modular por sección
+- EmailJS para envío de mensajes
+- Vercel Serverless Function (`api/contact.js`) con rate limiting diario
+- Despliegue en Vercel
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Secciones
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Hero y presentación profesional
+- Sobre mí
+- Stack técnico (frontend, backend, herramientas IA)
+- Casos reales con filtros por categoría
+- Contacto (email, WhatsApp y formulario)
 
-### `npm test`
+## Proyectos destacados en el portfolio
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Experiencias Sophie Langues — plataforma e-learning
+- Google x AIConnect — experiencia interactiva para eventos
+- Cardiodiabetesenred — capacitación gamificada (Novo Nordisk)
+- Sepelios Natarello — sitio corporativo con CMS
 
-### `npm run build`
+## Desarrollo local
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+cp .env.example .env
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Abrí [http://localhost:3000](http://localhost:3000).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Variables de entorno
 
-### `npm run eject`
+Copiá `.env.example` a `.env` y completá los valores de EmailJS:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Variable | Descripción |
+|---|---|
+| `REACT_APP_EMAILJS_SERVICE_ID` | ID del servicio EmailJS |
+| `REACT_APP_EMAILJS_TEMPLATE_ID` | ID del template EmailJS |
+| `REACT_APP_EMAILJS_PUBLIC_KEY` | Public key de EmailJS |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+En Vercel, configurá las mismas variables en **Project → Settings → Environment Variables**.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Rate limiting del formulario
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`api/contact.js` limita envíos por IP y cookie (1 por día). Opcionalmente usa Vercel KV si están definidos `KV_REST_API_URL` y `KV_REST_API_TOKEN`.
 
-## Learn More
+## Scripts
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| Comando | Descripción |
+|---|---|
+| `npm start` | Servidor de desarrollo |
+| `npm run build` | Build de producción |
+| `npm test` | Tests con React Testing Library |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Estructura
 
-### Code Splitting
+```text
+src/
+  components/   # Secciones del portfolio
+  assets/       # Imágenes y recursos
+public/         # HTML, CV, SEO (robots, sitemap, favicon)
+api/            # Serverless function de contacto (Vercel)
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contacto
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Web: [ezequielraymondi.com.ar](https://ezequielraymondi.com.ar)
+- LinkedIn: [linkedin.com/in/ezequielraymondi](https://www.linkedin.com/in/ezequielraymondi/)
+- GitHub: [github.com/ezequielraymondi](https://github.com/ezequielraymondi)

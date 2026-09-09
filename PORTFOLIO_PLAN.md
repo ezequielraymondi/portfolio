@@ -12,9 +12,8 @@ Archivo de seguimiento para mantener contexto entre sesiones de Pi/Codex y revis
 
 ## Estado actual
 
-- Foco: SEO y marca unificada como **Ezequiel Raymondi · Desarrollador Web**; deploy pendiente en Vercel.
-- Última revisión: Fase 1 SEO implementada (meta tags, robots.txt, sitemap.xml, JSON-LD, redes sociales, links LinkedIn/GitHub actualizados).
-- Verificación: `npm run build` pendiente tras cambios SEO.
+- Foco: repo listo para recruiters; deploy y variables EmailJS en Vercel pendientes de confirmar.
+- Última revisión: README profesional, limpieza de template, EmailJS en env vars, favicon y tests actualizados.
 
 ## Fuentes de verdad actuales
 

@@ -3,6 +3,9 @@ import emailjs from "@emailjs/browser";
 import "./contact.css";
 
 const CONTACT_LIMIT_KEY = "portfolio_contact_sent_date";
+const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
 const getToday = () => new Date().toISOString().slice(0, 10);
 
@@ -12,6 +15,11 @@ const Contact = () => {
 
   const sendEmail = async (e) => {
     e.preventDefault();
+
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      setStatus("error");
+      return;
+    }
 
     if (localStorage.getItem(CONTACT_LIMIT_KEY) === getToday()) {
       setStatus("daily-limit");
@@ -49,7 +57,7 @@ const Contact = () => {
         throw new Error("No se pudo enviar el mensaje.");
       }
 
-      await emailjs.send("service_l4rujge", "template_trwgstn", templateParams, "vQLEyaJKx0Mb8rlC0");
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY);
 
       e.target.reset();
       localStorage.setItem(CONTACT_LIMIT_KEY, getToday());
@@ -62,7 +70,7 @@ const Contact = () => {
   return (
     <section className="contact section" id="contact">
       <h2 className="section__title">Hablemos</h2>
-      <span className="section__subtitle">Disponible para oportunidades full-stack y proyectos web</span>
+      <span className="section__subtitle">Disponible para oportunidades como desarrollador web</span>
 
       <div className="contact__container container grid">
         <div className="contact__content">
