@@ -1,7 +1,7 @@
 import React from "react";
 
 const Backend = () => {
-  const skills = ["PHP", "MySQL/SQL", "LAMP", "Node.js", "AWS EC2/S3", "Postman", "Firebase"];
+  const skills = ["PHP", "Python", "MySQL/SQL", "LAMP", "Node.js", "AWS EC2/S3", "Postman", "Firebase"];
 
   return (
     <div className="skills__content">

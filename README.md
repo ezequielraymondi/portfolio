@@ -1,78 +1,48 @@
-# Portfolio — Ezequiel Raymondi
+# Ezequiel Raymondi
 
-Portfolio personal de **Ezequiel Raymondi**, desarrollador web. Presenta casos reales, stack técnico, CV descargable y formulario de contacto.
+**Desarrollador Web** · Pilar, Buenos Aires, Argentina
 
-**Sitio en vivo:** [ezequielraymondi.com.ar](https://ezequielraymondi.com.ar)
+👉 **[ezequielraymondi.com.ar](https://ezequielraymondi.com.ar)**
 
-## Stack
+---
 
-- React 18 (Create React App)
-- CSS modular por sección
-- EmailJS para envío de mensajes
-- Vercel Serverless Function (`api/contact.js`) con rate limiting diario
-- Despliegue en Vercel
+Hola. Soy **Ezequiel Raymondi**, desarrollador web con más de **3 años de experiencia** trabajando de forma freelance. Me especializo en llevar proyectos web de punta a punta: desde la lógica de negocio y las bases de datos hasta las interfaces, las APIs y el despliegue en producción.
 
-## Secciones
+Me gusta construir sistemas **claros, mantenibles y que funcionen de verdad** — no solo landing pages bonitas, sino herramientas que la gente usa todos los días. Hoy potencio mi flujo con **IA** para obtener mejores rendimientos.
 
-- Hero y presentación profesional
-- Sobre mí
-- Stack técnico (frontend, backend, herramientas IA)
-- Casos reales con filtros por categoría
-- Contacto (email, WhatsApp y formulario)
+## Qué hago
 
-## Proyectos destacados en el portfolio
+- Sitios corporativos y plataformas web
+- Sistemas con panel administrativo (CRUD, métricas, usuarios)
+- Experiencias interactivas para eventos
+- Integraciones, APIs y despliegue en la nube
 
-- Experiencias Sophie Langues — plataforma e-learning
-- Google x AIConnect — experiencia interactiva para eventos
-- Cardiodiabetesenred — capacitación gamificada (Novo Nordisk)
-- Sepelios Natarello — sitio corporativo con CMS
+**Stack con el que trabajo:** PHP, Python, JavaScript, React, MySQL, HTML/CSS, AWS/Vercel.
 
-## Desarrollo local
+## Experiencia con clientes y marcas
 
-```bash
-npm install
-cp .env.example .env
-npm start
-```
+He desarrollado soluciones para empresas como **Google**, **Novo Nordisk**, **Roche**, **AstraZeneca** y otros clientes del sector salud, eventos y educación.
 
-Abrí [http://localhost:3000](http://localhost:3000).
+## Algunos proyectos
 
-### Variables de entorno
-
-Copiá `.env.example` a `.env` y completá los valores de EmailJS:
-
-| Variable | Descripción |
+| Proyecto | Qué es |
 |---|---|
-| `REACT_APP_EMAILJS_SERVICE_ID` | ID del servicio EmailJS |
-| `REACT_APP_EMAILJS_TEMPLATE_ID` | ID del template EmailJS |
-| `REACT_APP_EMAILJS_PUBLIC_KEY` | Public key de EmailJS |
+| [Experiencias Sophie Langues](https://experienciasophielangues.sophielangues.com.ar/) | Plataforma e-learning para academia de idiomas |
+| [Google x AIConnect](https://youtube.com/shorts/zGlCkNKy94g) | Experiencia interactiva para eventos presenciales de Google |
+| [Cardiodiabetesenred](https://eventmedia.space/cardiodiabetesenred/) | Capacitación gamificada para colaboradores de Novo Nordisk |
+| [Sepelios Natarello](https://sepeliosnatarello.com.ar/) | Sitio corporativo con CMS y gestión de contenidos |
 
-En Vercel, configurá las mismas variables en **Project → Settings → Environment Variables**.
+Más casos, stack completo y CV en el **[portfolio](https://ezequielraymondi.com.ar)**.
 
-### Rate limiting del formulario
+## Sobre este repositorio
 
-`api/contact.js` limita envíos por IP y cookie (1 por día). Opcionalmente usa Vercel KV si están definidos `KV_REST_API_URL` y `KV_REST_API_TOKEN`.
-
-## Scripts
-
-| Comando | Descripción |
-|---|---|
-| `npm start` | Servidor de desarrollo |
-| `npm run build` | Build de producción |
-| `npm test` | Tests con React Testing Library |
-
-## Estructura
-
-```text
-src/
-  components/   # Secciones del portfolio
-  assets/       # Imágenes y recursos
-public/         # HTML, CV, SEO (robots, sitemap, favicon)
-api/            # Serverless function de contacto (Vercel)
-```
+Este repo es el código fuente de mi portfolio personal. Lo mantengo público como referencia de mi trabajo. El sitio que importa está en **[ezequielraymondi.com.ar](https://ezequielraymondi.com.ar)**.
 
 ## Contacto
 
-- Web: [ezequielraymondi.com.ar](https://ezequielraymondi.com.ar)
-- LinkedIn: [linkedin.com/in/ezequielraymondi](https://www.linkedin.com/in/ezequielraymondi/)
-- GitHub: [github.com/ezequielraymondi](https://github.com/ezequielraymondi)
+- **Web:** [ezequielraymondi.com.ar](https://ezequielraymondi.com.ar)
+- **Email:** ezequielraymondi@gmail.com
+- **LinkedIn:** [linkedin.com/in/ezequielraymondi](https://www.linkedin.com/in/ezequielraymondi/)
+- **GitHub:** [github.com/ezequielraymondi](https://github.com/ezequielraymondi)
+
+Disponible para oportunidades como desarrollador web y proyectos freelance.
