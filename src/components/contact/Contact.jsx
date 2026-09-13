@@ -1,27 +1,28 @@
-import React, { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
+import React, { useEffect, useRef, useState } from "react";
+import { getContactDay } from "../../utils/contactDate";
 import "./contact.css";
 
 const CONTACT_LIMIT_KEY = "portfolio_contact_sent_date";
-const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-const getToday = () => new Date().toISOString().slice(0, 10);
+const hasSentToday = () => localStorage.getItem(CONTACT_LIMIT_KEY) === getContactDay();
 
 const Contact = () => {
   const form = useRef();
   const [status, setStatus] = useState("");
 
+  useEffect(() => {
+    const storedDate = localStorage.getItem(CONTACT_LIMIT_KEY);
+    const today = getContactDay();
+
+    if (storedDate && storedDate !== today) {
+      localStorage.removeItem(CONTACT_LIMIT_KEY);
+    }
+  }, []);
+
   const sendEmail = async (e) => {
     e.preventDefault();
 
-    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-      setStatus("error");
-      return;
-    }
-
-    if (localStorage.getItem(CONTACT_LIMIT_KEY) === getToday()) {
+    if (hasSentToday()) {
       setStatus("daily-limit");
       return;
     }
@@ -34,10 +35,6 @@ const Contact = () => {
       from_email: formData.get("from_email"),
       message: formData.get("message"),
     };
-    const templateParams = {
-      clientName: payload.from_name,
-      ...payload,
-    };
 
     try {
       const response = await fetch("/api/contact", {
@@ -49,7 +46,13 @@ const Contact = () => {
       });
 
       if (response.status === 429) {
+        localStorage.setItem(CONTACT_LIMIT_KEY, getContactDay());
         setStatus("daily-limit");
+        return;
+      }
+
+      if (response.status === 503) {
+        setStatus("config-error");
         return;
       }
 
@@ -57,12 +60,11 @@ const Contact = () => {
         throw new Error("No se pudo enviar el mensaje.");
       }
 
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY);
-
       e.target.reset();
-      localStorage.setItem(CONTACT_LIMIT_KEY, getToday());
+      localStorage.setItem(CONTACT_LIMIT_KEY, getContactDay());
       setStatus("success");
     } catch (error) {
+      console.error("contact_send_error", error);
       setStatus("error");
     }
   };
@@ -144,6 +146,12 @@ const Contact = () => {
             {status === "success" && (
               <p className="contact__status contact__status--success">
                 Mensaje enviado correctamente. Te voy a responder pronto.
+              </p>
+            )}
+
+            {status === "config-error" && (
+              <p className="contact__status contact__status--error">
+                El formulario no esta configurado. Escribime por email o WhatsApp mientras lo resolvemos.
               </p>
             )}
 

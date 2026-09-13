@@ -16,12 +16,19 @@ function getClientIp(req) {
   return req.socket?.remoteAddress || "unknown";
 }
 
-function getDailyKey(ip) {
-  return `contact:${ip}:${new Date().toISOString().slice(0, 10)}`;
-}
+const CONTACT_TIMEZONE = process.env.CONTACT_TIMEZONE || "America/Argentina/Buenos_Aires";
 
 function getToday() {
-  return new Date().toISOString().slice(0, 10);
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: CONTACT_TIMEZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+}
+
+function getDailyKey(ip) {
+  return `contact:${ip}:${getToday()}`;
 }
 
 function parseCookies(cookieHeader) {
@@ -47,9 +54,11 @@ function hasDailyCookie(req) {
 }
 
 function setDailyCookie(res) {
+  const secureFlag = process.env.NODE_ENV === "production" ? "; Secure" : "";
+
   res.setHeader(
     "Set-Cookie",
-    `contact_sent_date=${getToday()}; Max-Age=${ONE_DAY_SECONDS}; Path=/; HttpOnly; Secure; SameSite=Lax`
+    `contact_sent_date=${getToday()}; Max-Age=${ONE_DAY_SECONDS}; Path=/; HttpOnly; SameSite=Lax${secureFlag}`
   );
 }
 
@@ -63,20 +72,32 @@ function cleanupMemoryStore() {
   }
 }
 
+function hasKvConfig() {
+  return Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+}
+
 async function hasReachedDailyLimit(key) {
-  if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
-    const response = await fetch(`${process.env.KV_REST_API_URL}/get/${encodeURIComponent(key)}`, {
-      headers: {
-        Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
-      },
-    });
+  if (hasKvConfig()) {
+    try {
+      const response = await fetch(`${process.env.KV_REST_API_URL}/get/${encodeURIComponent(key)}`, {
+        headers: {
+          Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
+        },
+      });
 
-    if (!response.ok) {
-      throw new Error("No se pudo validar el limite diario.");
+      if (!response.ok) {
+        console.warn("contact_kv_get_failed", { status: response.status });
+        cleanupMemoryStore();
+        return memoryStore.has(key);
+      }
+
+      const data = await response.json();
+      return Boolean(data.result);
+    } catch (error) {
+      console.warn("contact_kv_get_error", { message: error.message });
+      cleanupMemoryStore();
+      return memoryStore.has(key);
     }
-
-    const data = await response.json();
-    return Boolean(data.result);
   }
 
   cleanupMemoryStore();
@@ -84,24 +105,87 @@ async function hasReachedDailyLimit(key) {
 }
 
 async function markDailyLimit(key) {
-  if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
-    const response = await fetch(`${process.env.KV_REST_API_URL}/set/${encodeURIComponent(key)}/1?EX=${ONE_DAY_SECONDS}`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
-      },
-    });
+  if (hasKvConfig()) {
+    try {
+      const response = await fetch(`${process.env.KV_REST_API_URL}/set/${encodeURIComponent(key)}/1?EX=${ONE_DAY_SECONDS}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
+        },
+      });
 
-    if (!response.ok) {
-      throw new Error("No se pudo guardar el limite diario.");
+      if (response.ok) {
+        return;
+      }
+
+      console.warn("contact_kv_set_failed", { status: response.status });
+    } catch (error) {
+      console.warn("contact_kv_set_error", { message: error.message });
     }
-
-    return;
   }
 
   memoryStore.set(key, {
     expiresAt: Date.now() + ONE_DAY_SECONDS * 1000,
   });
+}
+
+function getEmailJsConfig() {
+  return {
+    serviceId: process.env.EMAILJS_SERVICE_ID,
+    templateId: process.env.EMAILJS_TEMPLATE_ID,
+    publicKey: process.env.EMAILJS_PUBLIC_KEY,
+    privateKey: process.env.EMAILJS_PRIVATE_KEY,
+  };
+}
+
+function assertEmailJsConfig() {
+  const config = getEmailJsConfig();
+  const missing = [];
+
+  if (!config.serviceId) missing.push("EMAILJS_SERVICE_ID");
+  if (!config.templateId) missing.push("EMAILJS_TEMPLATE_ID");
+  if (!config.publicKey) missing.push("EMAILJS_PUBLIC_KEY");
+  if (!config.privateKey) missing.push("EMAILJS_PRIVATE_KEY");
+
+  if (missing.length > 0) {
+    const error = new Error(`EmailJS no configurado: faltan ${missing.join(", ")}.`);
+    error.code = "EMAILJS_NOT_CONFIGURED";
+    throw error;
+  }
+
+  return config;
+}
+
+async function sendContactEmail(templateParams) {
+  const { serviceId, templateId, publicKey, privateKey } = assertEmailJsConfig();
+
+  const payload = {
+    service_id: serviceId,
+    template_id: templateId,
+    user_id: publicKey,
+    accessToken: privateKey,
+    template_params: templateParams,
+  };
+
+  const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const responseText = await response.text();
+    console.error("contact_emailjs_failed", {
+      status: response.status,
+      body: responseText.slice(0, 200),
+    });
+
+    const error = new Error("EmailJS no pudo enviar el mensaje.");
+    error.code = "EMAILJS_SEND_FAILED";
+    throw error;
+  }
 }
 
 function validatePayload(body) {
@@ -128,13 +212,23 @@ function validatePayload(body) {
 }
 
 module.exports = async function handler(req, res) {
-  if (req.method !== "POST") {
-    res.setHeader("Allow", "POST");
+  const method = String(req.method || "").toUpperCase();
+
+  if (method === "OPTIONS") {
+    res.setHeader("Allow", "POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    return res.status(204).end();
+  }
+
+  if (method !== "POST") {
+    res.setHeader("Allow", "POST, OPTIONS");
     return res.status(405).json({ message: "Metodo no permitido." });
   }
 
   try {
-    const validation = validatePayload(req.body);
+    const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    const validation = validatePayload(body);
 
     if (validation.error) {
       return res.status(400).json({ message: validation.error });
@@ -145,7 +239,7 @@ module.exports = async function handler(req, res) {
 
     if (hasDailyCookie(req) || (await hasReachedDailyLimit(dailyKey))) {
       console.info("contact_daily_limit_reached", {
-        hasKv: Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN),
+        hasKv: hasKvConfig(),
         ip,
       });
 
@@ -155,16 +249,26 @@ module.exports = async function handler(req, res) {
       });
     }
 
+    await sendContactEmail(validation.value);
     await markDailyLimit(dailyKey);
     setDailyCookie(res);
 
-    console.info("contact_daily_limit_reserved", {
-      hasKv: Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN),
+    console.info("contact_message_sent", {
+      hasKv: hasKvConfig(),
       ip,
     });
 
-    return res.status(200).json({ message: "Envio permitido." });
+    return res.status(200).json({ message: "Mensaje enviado correctamente." });
   } catch (error) {
+    console.error("contact_handler_error", { message: error.message, code: error.code });
+
+    if (error.code === "EMAILJS_NOT_CONFIGURED") {
+      return res.status(503).json({
+        code: "CONFIG_ERROR",
+        message: "El formulario no esta configurado. Escribime por email o WhatsApp mientras lo resolvemos.",
+      });
+    }
+
     return res.status(500).json({
       message: "No se pudo enviar el mensaje. Proba escribirme por email o WhatsApp.",
     });
